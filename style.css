@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: cadetblue;
+}
+
+
+.logo {
+  width: 7%;
+  height: 7%;
+  position: relative;
+  top: -11px;
+  left: 97%;
+  color: burlywood;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.container {
+  width: 50%;
+  height: 70%;
+  /* border: 2px solid red; */
+  background-color: burlywood;
+  border-radius:10px;
+}
+
+.inner {
+  margin: 12px;
+}
+
+.box {
+  margin: 12px;
+}
+.text {
+  width: 100%;
+  height: 100%;
+}
+.quotes {
+  width: 100%;
+  height: 100%;
+  font-size: 22px;
+  font: 500;
+  margin: 0px 12px;
+  font-family: 'STIX Two Math', serif;
+
+  padding: 20px;
+}
+.author {
+  margin: 12px;
+  position: relative;
+  left: 60%;
+  font-family: 'Lobster', cursive;
+}
+.newQuote {
+
+   position: relative;
+   left: 40%;
+   margin-top: 20px;
+  font-size: 24px;
+  font: 800;
+  /* border: 2px solid rgb(51, 255, 0); */
+  background-color: rgb(212, 0, 255);
+  width: fit-content;
+  border-radius:9px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  
+}
+

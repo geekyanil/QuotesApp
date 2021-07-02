@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="inner">
+        <div class="box">
+          <p class="number">
+            <img src="twitterlogo.png" alt="tweet" id="tweetMe" class="logo" />
+          </p>
+
+          <div class="text">
+            <p id="quotes" class="quotes"></p>
+            <p id="author" class="author"></p>
+          </div>
+          <label for="button">
+            <p id="newQ" class="newQuote">New Quotes</p>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let realData = "";
+      let quotesData = "";
+      const quotes = document.getElementById("quotes");
+      const newQ = document.getElementById("newQ");
+      const tweetMe = document.getElementById("tweetMe");
+      const author = document.getElementById("author");
+
+      const tweetNow = () => {
+        let tweetPost = `http://twitter.com/intent/tweet?text=${quotesData.text}`;
+        window.open(tweetPost);
+      };
+
+      const getNewQuotes = () => {
+        let rnum = Math.floor(Math.random() * 10);
+        quotesData = realData[rnum];
+        quotes.innerText = `"${quotesData.text}"`;
+
+        quotesData.author === null
+          ? (author.innerText = "Unknown")
+          : (author.innerText = `- ${quotesData.author}`);
+      };
+
+      const getQuotes = async () => {
+        const api = "https://type.fit/api/quotes";
+        // const api = "https://official-joke-api.appspot.com/jokes/programming/ten";
+
+        try {
+          let data = await fetch(api);
+          realData = await data.json();
+          getNewQuotes();
+        } catch (error) {}
+      };
+      tweetMe.addEventListener("click", tweetNow);
+      newQ.addEventListener("click", getNewQuotes);
+      getQuotes();
+    </script>
+  </body>
+</html>
